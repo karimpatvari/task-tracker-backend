@@ -37,10 +37,9 @@ public class TaskController {
             @RequestBody CreateTaskRequest request
     ) {
         User userByToken = userService.getUserByToken(token);
-        taskService.createTask(request, userByToken);
-        return ResponseEntity.ok().body(
-                new Message("Task created successfully")
-        );
+        TaskDto taskDto = taskService.createTask(request, userByToken);
+
+        return ResponseEntity.ok().body(taskDto);
     }
 
     @PostMapping("/tasks/delete")
