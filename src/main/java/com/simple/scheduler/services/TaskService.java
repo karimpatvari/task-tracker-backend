@@ -40,14 +40,14 @@ public class TaskService {
         return taskDtos;
     }
 
-    public void createTask(CreateTaskRequest request, User user) {
+    public TaskDto createTask(CreateTaskRequest request, User user) {
         Task task = Task.builder()
                 .title(request.getTitle())
                 .text(request.getText())
                 .isCompleted(false)
                 .user(user)
                 .build();
-        TaskToDto(taskRepository.save(task));
+        return TaskToDto(taskRepository.save(task));
     }
 
     public void deleteTask(Long taskId, User user) {

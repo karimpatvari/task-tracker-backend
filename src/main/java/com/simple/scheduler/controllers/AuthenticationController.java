@@ -38,8 +38,6 @@ public class AuthenticationController {
         return ResponseEntity.ok()
                 .header(HttpHeaders.AUTHORIZATION, "Bearer " + authenticationService.register(request))
                 .build();
-        //todo Так же, в случае успешной регистрации, пользователю отправляется приветственное письмо
-        // (непосредственная отправка письма происходит в другом сервисе, детали ниже в разделе Kafka)
     }
 
     @PostMapping("/auth/login")
